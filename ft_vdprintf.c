@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/06/23 12:25:20 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/06/28 13:25:38 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ struct Parameters		*parse_specifiers(const char *fs, va_list args)
 	if (is_in(*fs, specifiers))
 		format->type = *fs;
 
-	/*printf("\n\nStruct Parameters :\n");
-	  printf("format->padding_flag : %s\n", format->padding_flag ? "Yes" : "No");
-	  printf("format->right_adjust_flag : %s\n", format->right_adjust_flag ? "Yes" : "No");
-	  printf("format->min_field_width : %d\n", format->min_field_width);
-	  printf("format->precison : %d\n", format->padding_flag);
-	  printf("format->type : %c\n", format->type);
-	*/
+	printf("\n\nStruct Parameters :\n");
+	printf("format->zero_flag : %s\n", format->zero_flag ? "Yes" : "No");
+	printf("format->minus_flag : %s\n", format->minus_flag ? "Yes" : "No");
+	printf("format->min_field_width : %d\n", format->min_field_width);
+	printf("format->precision : %d\n", format->precision);
+	printf("format->type : %c\n", format->type);
+
 
 	return format;
 }
