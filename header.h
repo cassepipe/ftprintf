@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/06/24 13:38:05 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/06/29 18:04:24 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char *ft_utoa(unsigned int n);
 char *ft_utoa_base(unsigned int n, const char* base);
 char *ptr_repr(void* ptr);	
 char *str_repr(char* str, struct Parameters* format);
-char *nbr_repr(int nbr, struct Parameters* format);
+char *nbr_repr(long nbr, struct Parameters* format);
 void leftpad(char **str, char c, size_t n);
 void rightpad(char **str, char c, size_t n);
 

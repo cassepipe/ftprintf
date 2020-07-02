@@ -6,7 +6,7 @@
 #    By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/23 16:37:33 by tpouget           #+#    #+#              #
-#    Updated: 2020/06/27 16:27:53 by tpouget          ###   ########.fr        #
+#    Updated: 2020/06/30 13:10:16 by tpouget          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,14 @@ CC			= 	gcc
 
 #	Rules
 
-all:			libftprintf.a
+all:			libftprintf.a a.out
 
 a.out:			${OBJS} libft/libft.a
 				${CC} ${OBJS} libft/libft.a
 
-libftprintf.a:	${OBJS} libft/libft.a 
+libftprintf.a:	${OBJS} libft/libft.a  
 				ar rcs $@ ${OBJS} $(wildcard libft/*.o)
+				make -C pft
 
 %.o:			%.c	header.h
 				${CC} ${CFLAGS} -c $< -o $@

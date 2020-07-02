@@ -6,47 +6,79 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:35:08 by tpouget           #+#    #+#             */
-/*   Updated: 2020/06/25 15:54:02 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/06/30 17:55:27 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char	*nbr_repr(int nbr, struct Parameters *format)
+static char	*ft_lutoa_format(long nbr, int type)
+{
+	char *str;
+
+	if (type == 'u' || type == 'd' || type == 'i')
+		str = ft_lutoa_base(nbr, "0123456789");
+	else if (type == 'x')
+		str = ft_lutoa_base(nbr, "0123456789abcdef");
+	else if (type == 'X')
+		str = ft_lutoa_base(nbr, "0123456789ABCDEF");
+	else
+		str = "(unknown format)";
+
+	return (str);
+}
+
+char	*nbr_repr(long nbr, struct Parameters *format)
 {
 	char *str;
 	ssize_t diff;
 	size_t size;
+	int neg;
 
-	if (format->type == 'd' || format->type == 'i')
-		str = ft_itoa(nbr);
-	else if (format->type == 'u')
-		str = ft_lutoa_base(nbr, "0123456789");
-	else if (format->type == 'x')
-		str = ft_lutoa_base(nbr, "0123456789abcdef");
-	else if (format->type == 'X')
-		str = ft_lutoa_base(nbr, "0123456789ABCDEF");
+	neg = nbr < 0 ? 1 : 0;
+	nbr = neg ? -nbr : nbr;
+	if (format->precision == 0)
+		str = ft_strdup("");
+	else
+		str = ft_lutoa_format(nbr, format->type);
+
 	size = ft_strlen(str);
-	if ((diff = format->precision - size) > 0)
-		leftpad(&str, '0', diff);
-	size = ft_strlen(str);
-	if ((diff = format->min_field_width - size) > 0)
+	if (format->precision > 0)
 	{
-		if (format->minus_flag)
-		{
-			rightpad(&str, ' ', diff);
-		}
-		else if (format->precision < 0 && format->zero_flag)
+		diff = format->precision - size;
+		if (diff > 0)
+			leftpad(&str, '0', diff);
+	}
+	else if (format->zero_flag && !format->minus_flag)
+	{
+		diff = format->min_field_width - size;
+		if (diff > 0)
 		{
 			leftpad(&str, '0', diff);
-		}
-		else
-		{
-			leftpad(&str, ' ', diff);
+			if (neg)
+			{
+				*str = '-';
+				neg--;
+			}
 		}
 	}
-	/*printf("nbr=%s and out !\n", str);*/
-	if (!str)
-		return ("(allocation error)");
+	size = ft_strlen(str);
+	if (neg)
+	{
+		leftpad(&str, '-', 1);
+		size++;
+	}
+	if(format->minus_flag)
+	{
+		diff = format->min_field_width - size;
+		if (diff > 0)
+			rightpad(&str, ' ', diff);
+	}
+	else
+	{
+		diff = format->min_field_width - size;
+		if (diff > 0)
+			leftpad(&str, ' ', diff);
+	}
 	return (str);
 }
