@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 18:19:58 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/02 16:23:40 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/02 18:34:50 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char *str_repr(char *s, struct Parameters *format)
 	size_t size;
 
 	if (!s)
-		str = ft_strdup("(null)");
+		str = ft_strndup("(null)", format->precision);
 	else  if (format->type == 'c')
 		str = ft_strndup(s, 1);
 	else
