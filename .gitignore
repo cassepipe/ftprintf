@@ -7,4 +7,5 @@ results.txt
 test.libc
 test.mine
 *.ghc
+.swp
 

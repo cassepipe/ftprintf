@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:44:49 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/03 15:31:39 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/03 16:38:23 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int main(void)
 	/*printf("%9.1s\n", NULL);*/
 	/*ft_printf("%9.1s\n", NULL);*/
 
-	printf("%s\n", NULL);
-	ft_printf("%s\n", NULL);
+	/*printf("%s\n", NULL);
+	ft_printf("%s\n", NULL);*/
 
 	/*printf("%-9.1s\n", NULL);*/
 	/*ft_printf("%-9.1s\n", NULL);*/

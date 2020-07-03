@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/03 15:00:33 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/03 16:38:04 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,20 @@ char				*write_from_format(int fd, struct Parameters *format, va_list args)
 		replacement = nbr_repr(va_arg(args, unsigned int), format);
 	else if (format->type == 's')
 		replacement = str_repr(va_arg(args, char*), format);
-	else if (format->type == 'c' && (c = va_arg(args, int)))
+	else if (format->type == 'c')
+	{
+		c = va_arg(args, int);
 		replacement = str_repr(&c, format);
+	}
 	else if (format->type == 'p')
 		replacement = ptr_repr(va_arg(args, void*));
 	else if (format->type == '%')
-		replacement = ft_strdup("%");
+		replacement = str_repr("%", format);
 	else
 		replacement = ft_strdup("(format error)");
 
 	if (replacement)
-		write(fd, replacement, ft_strlen(replacement));
+		write(fd, replacement, format->type == 'c' ? 1 : ft_strlen(replacement));
 	free(replacement);
 
 	return (replacement);
