@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/02 13:06:23 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/03 12:22:34 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ char				*write_from_format(int fd, struct Parameters *format, va_list args)
 
 	if (replacement)
 		write(fd, replacement, ft_strlen(replacement));
+	free(replacement);
 
 	return (replacement);
 }
@@ -122,6 +123,7 @@ int					ft_vdprintf(int fd, const char *fs, va_list args)
 			fs++;
 			format = parse_specifiers(fs, args);
 			write_from_format(fd, format, args);
+			free(format);
 			while (is_in(*fs, flags))
 				fs++;
 			if (is_in(*fs, specifiers))

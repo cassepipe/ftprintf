@@ -6,7 +6,7 @@
 #    By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/23 16:37:33 by tpouget           #+#    #+#              #
-#    Updated: 2020/06/30 13:10:16 by tpouget          ###   ########.fr        #
+#    Updated: 2020/07/03 12:24:44 by tpouget          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CFLAGS		=	-Wall -Wextra
 
 RM			= 	rm -rf
 
-CC			= 	gcc
+CC			= 	 gcc
 
 
 #	Rules

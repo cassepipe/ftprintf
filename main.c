@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:44:49 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/02 19:35:27 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/03 12:23:27 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(void)
 	//char *ptr = malloc(1);
 	//char *null = NULL;
 
-	
+
 	printf("%.5s%7s\n", "yo", "boi");
 	ft_printf("%.5s%7s\n", "yo", "boi");
 
@@ -78,7 +78,7 @@ int main(void)
 
 	printf("%16s\n", "nark nark");
 	ft_printf("%16s\n", "nark nark");
-	
+
 	printf("%-16s\n", "nark nark");
 	ft_printf("%-16s\n", "nark nark");
 
