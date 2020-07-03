@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/03 12:22:34 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/03 15:00:33 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ char				*write_from_format(int fd, struct Parameters *format, va_list args)
 	else if (format->type == 'p')
 		replacement = ptr_repr(va_arg(args, void*));
 	else if (format->type == '%')
-		replacement = "%";
+		replacement = ft_strdup("%");
 	else
-		replacement = "(format error)";
+		replacement = ft_strdup("(format error)");
 
 	if (replacement)
 		write(fd, replacement, ft_strlen(replacement));

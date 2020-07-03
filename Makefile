@@ -6,7 +6,7 @@
 #    By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/23 16:37:33 by tpouget           #+#    #+#              #
-#    Updated: 2020/07/03 12:24:44 by tpouget          ###   ########.fr        #
+#    Updated: 2020/07/03 12:59:55 by tpouget          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ OBJS		= 	${SRC:.c=.o}
 	
 CFLAGS		=	-Wall -Wextra 
 
-RM			= 	rm -rf
+RM			= 	rm -f
 
-CC			= 	 gcc
+CC			= 	 clang
 
 
 #	Rules
@@ -45,9 +45,11 @@ libft/libft.a:
 
 clean:			
 				${RM} ${OBJS}
+				make -C libft clean
 
 fclean:			clean
 				rm -f a.out libftprintf.a
+				rm -f libft/libft.a
 
 re:				fclean all
 

@@ -6,12 +6,14 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/06/29 18:04:24 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/03 13:24:47 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADERS_H
 # define HEADERS_H 
+
+# define INT_MAX 2147483647 
 
 # include <unistd.h>
 # include <stdlib.h>
