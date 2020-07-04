@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/03 16:38:04 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/04 12:01:41 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,9 @@ struct Parameters		*parse_specifiers(const char *fs, va_list args)
 char				*write_from_format(int fd, struct Parameters *format, va_list args)
 {
 	char	*replacement;
-	char	c;
+	ssize_t	size;
 
+	size = -1;
 	if (is_in(format->type, "di"))
 		replacement = nbr_repr(va_arg(args, int), format);
 	else if (is_in(format->type, "uxX"))
@@ -94,10 +95,7 @@ char				*write_from_format(int fd, struct Parameters *format, va_list args)
 	else if (format->type == 's')
 		replacement = str_repr(va_arg(args, char*), format);
 	else if (format->type == 'c')
-	{
-		c = va_arg(args, int);
-		replacement = str_repr(&c, format);
-	}
+		replacement = char_repr(va_arg(args, int), format, &size);
 	else if (format->type == 'p')
 		replacement = ptr_repr(va_arg(args, void*));
 	else if (format->type == '%')
@@ -105,8 +103,10 @@ char				*write_from_format(int fd, struct Parameters *format, va_list args)
 	else
 		replacement = ft_strdup("(format error)");
 
+	if (size < 0)
+		size = ft_strlen(replacement);
 	if (replacement)
-		write(fd, replacement, format->type == 'c' ? 1 : ft_strlen(replacement));
+		write(fd, replacement, size);
 	free(replacement);
 
 	return (replacement);
