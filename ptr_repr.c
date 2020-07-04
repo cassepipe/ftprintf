@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 18:08:45 by tpouget           #+#    #+#             */
-/*   Updated: 2020/06/24 15:04:33 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/04 15:38:40 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ptr_repr(void *ptr)
 	char *tmp;
 
 	if (!ptr)
-		return (ft_strdup("0x0"));
+		return (ft_strdup("(nil)"));
 	p = ft_lutoa_base((unsigned long)ptr, "0123456789abcdef");
 	tmp = p;
 	p = ft_strjoin("0x", p);

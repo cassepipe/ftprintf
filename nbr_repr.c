@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:35:08 by tpouget           #+#    #+#             */
-/*   Updated: 2020/06/30 17:55:27 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/04 15:34:15 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static char	*ft_lutoa_format(long nbr, int type)
 		str = ft_lutoa_base(nbr, "0123456789ABCDEF");
 	else
 		str = "(unknown format)";
-
 	return (str);
 }
 

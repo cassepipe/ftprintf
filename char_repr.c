@@ -6,22 +6,11 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 20:47:21 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/04 12:52:01 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/04 15:24:45 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-/*static char *find_and_replace(char** str, char old, char new)
-{
-	while (**str)
-	{
-		if (**str == old)
-			**str = new;
-		(*str)++;
-	}
-	return (*str);
-}*/
 
 char	*char_repr(unsigned char c, struct Parameters *format, ssize_t *size)
 {
