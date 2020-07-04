@@ -8,4 +8,5 @@ test.libc
 test.mine
 *.ghc
 *.swp
+a.out
 
