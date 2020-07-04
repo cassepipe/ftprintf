@@ -71,80 +71,13 @@ Test 173 (p_null) : FAILED.
 Test 178 (p_ftfc_5w_throwswarning) : FAILED.
     First line of code: {return test("%5p", 0);}
       expected output : "(nil)"
-      your output     : "0x0"
+      your output     : "  0x0"
       expected (nonprintable as hex) : "(nil)"
-      actual   (nonprintable as hex) : "0x0"
+      actual   (nonprintable as hex) : "  0x0"
 
-Test 180 (p_width_fit) : FAILED.
-    First line of code: {return test("%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p%70p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);      expected output : "                                                              0x7286f8                                                              0x7286f9          "
-      your output     : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-      expected (nonprintable as hex) : "                                                              0x7286f8                                                              0x7286f9          "
-      actual   (nonprintable as hex) : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-
-Test 182 (p_width_16) : FAILED.
-    First line of code: {return test("%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);      expected output : "        0x7286f8        0x7286f9        0x7286fa        0x7286fc        0x728700        0x728704        0x728708        0x728710        0x728718      "
-      your output     : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-      expected (nonprintable as hex) : "        0x7286f8        0x7286f9        0x7286fa        0x7286fc        0x728700        0x728704        0x728708        0x728710        0x728718      "
-      actual   (nonprintable as hex) : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-
-Test 184 (p_width_32) : FAILED.
-    First line of code: {return test("%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p%32p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);      expected output : "                        0x7286f8                        0x7286f9                        0x7286fa                        0x7286fc                      "
-      your output     : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-      expected (nonprintable as hex) : "                        0x7286f8                        0x7286f9                        0x7286fa                        0x7286fc                      "
-      actual   (nonprintable as hex) : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-
-Test 185 (p_width_fit_lj) : FAILED.
-    First line of code: {return test("%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p%-70p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10      expected output : "0x7286f8                                                              0x7286f9                                                              0x7286fa  "
-      your output     : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-      expected (nonprintable as hex) : "0x7286f8                                                              0x7286f9                                                              0x7286fa  "
-      actual   (nonprintable as hex) : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-
-Test 187 (p_width_16_lj) : FAILED.
-    First line of code: {return test("%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p%-16p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10      expected output : "0x7286f8        0x7286f9        0x7286fa        0x7286fc        0x728700        0x728704        0x728708        0x728710        0x728718        0x7287"
-      your output     : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-      expected (nonprintable as hex) : "0x7286f8        0x7286f9        0x7286fa        0x7286fc        0x728700        0x728704        0x728708        0x728710        0x728718        0x7287"
-      actual   (nonprintable as hex) : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-
-Test 189 (p_width_32_lj) : FAILED.
-    First line of code: {return test("%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10      expected output : "0x7286f8                        0x7286f9                        0x7286fa                        0x7286fc                        0x728700              "
-      your output     : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-      expected (nonprintable as hex) : "0x7286f8                        0x7286f9                        0x7286fa                        0x7286fc                        0x728700              "
-      actual   (nonprintable as hex) : "0x7286f80x7286f90x7286fa0x7286fc0x7287000x7287040x7287080x7287100x7287180x7287200x7287280x728730"
-
-Test 489 (new2019_negstar_1) : FAILED.
-    First line of code: {return test("%*s", -32, "abc");}
-      expected output : "abc                             "
-      your output     : "abc"
-      expected (nonprintable as hex) : "abc                             "
-      actual   (nonprintable as hex) : "abc"
-
-Test 490 (new2019_negstar_2) : FAILED.
-    First line of code: {return test("%-*s", -32, "abc");}
-      expected output : "abc                             "
-      your output     : "abc"
-      expected (nonprintable as hex) : "abc                             "
-      actual   (nonprintable as hex) : "abc"
-
-Test 493 (new2019_negstar_5) : FAILED.
-    First line of code: {return test("%-*.*s", -7, -3, "yolo");}
-      expected output : "yolo   "
-      your output     : "yolo"
-      expected (nonprintable as hex) : "yolo   "
-      actual   (nonprintable as hex) : "yolo"
-
-Test 495 (new2019_negstar_7) : FAILED.
-    First line of code: {return test("%*i", -14, 94827);}
-      expected output : "94827         "
-      your output     : "94827"
-      expected (nonprintable as hex) : "94827         "
-      actual   (nonprintable as hex) : "94827"
-
-Test 497 (new2019_negstar_9) : FAILED.
-    First line of code: {return test("%0*i", -7, -54);}
-      expected output : "-54    "
-      your output     : "-54"
-      expected (nonprintable as hex) : "-54    "
-      actual   (nonprintable as hex) : "-54"
+Test 300 (i_zp_neg_exactfit) : FAILED.
+    First line of code: {return test("%04i", -532);}
+    Timed out
 
 Test 647 (moul_star_2) : FAILED.
     First line of code: {return test("%% *.5i 42 == |% *.5i|

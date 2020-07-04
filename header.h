@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/04 15:58:08 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/04 17:57:23 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define HEADERS_H 
 
 # define INT_MAX 2147483647 
+# define INT_MIN -2147483648 
+# define FLAGS "0- "
 
-# include <unistd.h>
+# include <unistd.h> 
 # include <stdlib.h>
 # include <stdarg.h>
 # include "libft/libft.h"

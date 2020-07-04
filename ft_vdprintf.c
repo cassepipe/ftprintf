@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/04 16:06:58 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/04 18:02:11 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ static inline int		is_in(char c, const char *charset)
 	return (0);
 }
 
-struct Parameters		*parse_specifiers(const char *fs, va_list args)
+static struct Parameters *new_format(void)
 {
-	char flags[] = 		"0- ";
 	struct Parameters *format;
 
 	format = malloc(sizeof(struct Parameters));
@@ -38,8 +37,15 @@ struct Parameters		*parse_specifiers(const char *fs, va_list args)
 	format->min_field_width = 0;
 	format->precision = -1;
 
-	// Flag part
-	while (is_in(*fs, flags))
+	return (format);
+}
+
+struct Parameters		*parse_specifiers(const char *fs, va_list args)
+{
+	struct Parameters *format = new_format();
+
+	format = new_format();
+	while (is_in(*fs, FLAGS))
 	{
 		if (*fs == '0')
 			format->zero_flag = 1;
@@ -47,16 +53,12 @@ struct Parameters		*parse_specifiers(const char *fs, va_list args)
 			format->minus_flag = 1;
 		fs++;
 	}
-
-	// Minimum field with part
 	if (*fs == '*')
 		format->min_field_width = va_arg(args, int);
 	else
 		format->min_field_width = ft_atoi(fs);
 	while (ft_isdigit(*fs) || *fs == '*')
 		fs++;
-
-	// Precision part
 	if (*fs == '.')
 	{
 		fs++;
@@ -67,9 +69,15 @@ struct Parameters		*parse_specifiers(const char *fs, va_list args)
 	}
 	while (ft_isdigit(*fs) || *fs == '*')
 		fs++;
-
-	// Specifier part
 	format->type = *fs;
+
+	if (format->min_field_width == INT_MIN)
+		format->min_field_width++;
+	if (format->min_field_width < 0)
+	{
+		format->min_field_width = -format->min_field_width;
+		format->minus_flag = 1;
+	}
 
 	/*printf("\n\nStruct Parameters :\n");
 	printf("format->zero_flag : %s\n", format->zero_flag ? "Yes" : "No");
