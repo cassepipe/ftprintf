@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 18:29:05 by tpouget           #+#    #+#             */
-/*   Updated: 2020/06/24 13:31:29 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/04 16:01:40 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-void				ft_print_ptr(void *ptr);
 
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **, t_list *);
