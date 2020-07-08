@@ -75,10 +75,6 @@ Test 178 (p_ftfc_5w_throwswarning) : FAILED.
       expected (nonprintable as hex) : "(nil)"
       actual   (nonprintable as hex) : "  0x0"
 
-Test 300 (i_zp_neg_exactfit) : FAILED.
-    First line of code: {return test("%04i", -532);}
-    Timed out
-
 Test 647 (moul_star_2) : FAILED.
     First line of code: {return test("%% *.5i 42 == |% *.5i|
 ", 4, 42);}

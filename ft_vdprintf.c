@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/04 18:02:11 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/08 15:59:19 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "header.h"
 #include <stdio.h>
 
-static inline int		is_in(char c, const char *charset)
+static inline int			is_in(char c, const char *charset)
 {
 	while (*charset)
 	{
@@ -25,26 +25,30 @@ static inline int		is_in(char c, const char *charset)
 	return (0);
 }
 
-static struct Parameters *new_format(void)
+static void					*init_format(struct Parameters *format)
 {
-	struct Parameters *format;
-
-	format = malloc(sizeof(struct Parameters));
-	if (!format)
-		return (NULL);
 	format->zero_flag = 0;
 	format->minus_flag = 0;
 	format->min_field_width = 0;
 	format->precision = -1;
-
 	return (format);
 }
 
-struct Parameters		*parse_specifiers(const char *fs, va_list args)
+static void					arrange_format(struct Parameters *format)
 {
-	struct Parameters *format = new_format();
+	if (format->minus_flag)
+		format->zero_flag = 0;
+	if (format->min_field_width == INT_MIN)
+		format->min_field_width++;
+	if (format->min_field_width < 0)
+	{
+		format->min_field_width = -format->min_field_width;
+		format->minus_flag = 1;
+	}
+}
 
-	format = new_format();
+static void					*parse_str_into_format(const char *fs, struct Parameters *format, va_list args)
+{
 	while (is_in(*fs, FLAGS))
 	{
 		if (*fs == '0')
@@ -70,27 +74,10 @@ struct Parameters		*parse_specifiers(const char *fs, va_list args)
 	while (ft_isdigit(*fs) || *fs == '*')
 		fs++;
 	format->type = *fs;
-
-	if (format->min_field_width == INT_MIN)
-		format->min_field_width++;
-	if (format->min_field_width < 0)
-	{
-		format->min_field_width = -format->min_field_width;
-		format->minus_flag = 1;
-	}
-
-	/*printf("\n\nStruct Parameters :\n");
-	printf("format->zero_flag : %s\n", format->zero_flag ? "Yes" : "No");
-	printf("format->minus_flag : %s\n", format->minus_flag ? "Yes" : "No");
-	printf("format->min_field_width : %d\n", format->min_field_width);
-	printf("format->precision : %d\n", format->precision);
-	printf("format->type : %c\n", format->type);*/
-
-	return format;
+	return (format);
 }
 
-
-char				*write_from_format(int fd, struct Parameters *format, va_list args)
+void				*write_from_format(int fd, struct Parameters *format, va_list args)
 {
 	char	*replacement;
 	ssize_t	size;
@@ -110,31 +97,30 @@ char				*write_from_format(int fd, struct Parameters *format, va_list args)
 		replacement = str_repr("%", format);
 	else
 		replacement = ft_strdup("(format error)");
-
 	if (size < 0)
 		size = ft_strlen(replacement);
 	if (replacement)
 		write(fd, replacement, size);
 	free(replacement);
-
-	return (replacement);
 }
 
 int					ft_vdprintf(int fd, const char *fs, va_list args)
 {
-	const char specifiers[] = "cspdiuxX%";
-	const char flags[] = 		"0123456789- .*";
-	struct Parameters *format;
-	const char *last_location = fs;
+	const char *specifiers =	"cspdiuxX%";
+	const char *flags = 		"0123456789- .*";
+	struct Parameters format;
+	const char *last_location;
 
+	last_location = fs;
 	while (*fs)
 	{
 		if (*fs == '%')
 		{
 			fs++;
-			format = parse_specifiers(fs, args);
-			write_from_format(fd, format, args);
-			free(format);
+			init_format(&format);
+			parse_str_into_format(fs, &format, args);
+			arrange_format(&format);
+			write_from_format(fd, &format, args);
 			while (is_in(*fs, flags))
 				fs++;
 			if (is_in(*fs, specifiers))
