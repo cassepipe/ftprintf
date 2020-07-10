@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 16:01:55 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 16:09:21 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static void					*init_format(struct Parameters *format)
 
 static void					arrange_format(struct Parameters *format)
 {
-	if (format->minus_flag)
-		format->zero_flag = 0;
 	if (format->min_field_width == INT_MIN)
 		format->min_field_width++;
 	if (format->min_field_width < 0)
@@ -45,6 +43,8 @@ static void					arrange_format(struct Parameters *format)
 		format->min_field_width = -format->min_field_width;
 		format->minus_flag = 1;
 	}
+	if (format->minus_flag)
+		format->zero_flag = 0;
 	if (format->precision >= 0 && is_in(format->type, "diuxX"))
 			format->zero_flag = 0;
 }
