@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:45:47 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 16:41:00 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 16:56:54 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ char	*nbr_repr(long nbr, struct Parameters *format)
 	else if (format->zero_flag && (diff = format->min_field_width - size - neg) > 0)
 			leftpad(&str, '0', diff);
 	size = ft_strlen(str);
-	if (neg)
+	if (neg && ++size)
 		leftpad(&str, '-', 1);
-	size = ft_strlen(str);
 	if(format->minus_flag && (diff = format->min_field_width - size) > 0)
 			rightpad(&str, ' ', diff);
 	else if((diff = format->min_field_width - size) > 0)
