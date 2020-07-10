@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:45:47 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 15:10:58 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 16:41:00 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static char	*ft_lutoa_format(long nbr, int type)
 char	*nbr_repr(long nbr, struct Parameters *format)
 {
 	char *str;
-	ssize_t diff;
-	size_t size;
+	long diff;
+	long size;
 	int neg;
 
 	neg = nbr < 0 ? 1 : 0;
