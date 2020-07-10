@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:44:49 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/07 19:06:05 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 14:17:51 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int main(void)
 	printf("%9.1s\n", NULL);
 	ft_printf("%9.1s\n", NULL);
 
-	printf("%s\n", NULL);
-	ft_printf("%s\n", NULL);
+	/*printf("%s\n", NULL);*/
+	/*ft_printf("%s\n", NULL);*/
 
 	printf("%-9.1s\n", NULL);
 	ft_printf("%-9.1s\n", NULL);
@@ -90,8 +90,17 @@ int main(void)
 	printf("%-5c\n", '\0');
 	ft_printf("%-5c\n", '\0');
 
-	/*printf("%*d\n", -2147483648, 12345);
-	ft_printf("%*d\n", -2147483648 , 12345);*/
+	printf("%04d\n", -532);
+	ft_printf("%04d\n", -532);
+
+	printf("%-3.7i\n", 3267);
+	ft_printf("%-3.7i\n", 3267);
+
+	printf("%0*i\n", -7, -54);
+	ft_printf("%0*i\n", -7, -54);
+
+	/*printf("%*d\n", -2147483648, 12345);*/
+	/*ft_printf("%*d\n", -2147483648 , 12345);*/
 
 	return (0);
 

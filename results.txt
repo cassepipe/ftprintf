@@ -75,6 +75,17 @@ Test 178 (p_ftfc_5w_throwswarning) : FAILED.
       expected (nonprintable as hex) : "(nil)"
       actual   (nonprintable as hex) : "  0x0"
 
+Test 315 (i_prec_width_nofit_fit_neg_lj) : FAILED.
+    First line of code: {return test("%-8.3i", -8473);}
+    Timed out
+
+Test 497 (new2019_negstar_9) : FAILED.
+    First line of code: {return test("%0*i", -7, -54);}
+      expected output : "-54    "
+      your output     : "-000054"
+      expected (nonprintable as hex) : "-54    "
+      actual   (nonprintable as hex) : "-000054"
+
 Test 647 (moul_star_2) : FAILED.
     First line of code: {return test("%% *.5i 42 == |% *.5i|
 ", 4, 42);}

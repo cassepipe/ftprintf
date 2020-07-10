@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/08 15:59:19 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/09 11:19:10 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void					arrange_format(struct Parameters *format)
 		format->min_field_width = -format->min_field_width;
 		format->minus_flag = 1;
 	}
+	if (format->precision >= 0 && is_in(format->type, "diuxX"))
+			format->zero_flag = 0;
 }
 
 static void					*parse_str_into_format(const char *fs, struct Parameters *format, va_list args)
@@ -77,7 +79,7 @@ static void					*parse_str_into_format(const char *fs, struct Parameters *format
 	return (format);
 }
 
-void				*write_from_format(int fd, struct Parameters *format, va_list args)
+static void				*write_from_format(int fd, struct Parameters *format, va_list args)
 {
 	char	*replacement;
 	ssize_t	size;
