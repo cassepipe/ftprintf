@@ -6,10 +6,9 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 16:09:21 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 17:47:19 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "header.h"
 #include <stdio.h>
@@ -46,10 +45,12 @@ static void					arrange_format(struct Parameters *format)
 	if (format->minus_flag)
 		format->zero_flag = 0;
 	if (format->precision >= 0 && is_in(format->type, "diuxX"))
-			format->zero_flag = 0;
+		format->zero_flag = 0;
 }
 
-static void					*parse_str_into_format(const char *fs, struct Parameters *format, va_list args)
+static void					*parse_str_into_format(const char *fs,
+		struct Parameters *format,
+		va_list args)
 {
 	while (is_in(*fs, FLAGS))
 	{
@@ -65,9 +66,8 @@ static void					*parse_str_into_format(const char *fs, struct Parameters *format
 		format->min_field_width = ft_atoi(fs);
 	while (ft_isdigit(*fs) || *fs == '*')
 		fs++;
-	if (*fs == '.')
+	if (*fs == '.' && fs++)
 	{
-		fs++;
 		if (*fs == '*')
 			format->precision = va_arg(args, int);
 		else
@@ -79,7 +79,9 @@ static void					*parse_str_into_format(const char *fs, struct Parameters *format
 	return (format);
 }
 
-static void				write_from_format(int fd, struct Parameters *format, va_list args)
+static void					write_from_format(int fd,
+		struct Parameters *format,
+		va_list args)
 {
 	char	*replacement;
 	ssize_t	size;
@@ -108,10 +110,8 @@ static void				write_from_format(int fd, struct Parameters *format, va_list args
 
 int					ft_vdprintf(int fd, const char *fs, va_list args)
 {
-	const char *specifiers =	"cspdiuxX%";
-	const char *flags = 		"0123456789- .*";
-	struct Parameters format;
-	const char *last_location;
+	struct		Parameters format;
+	const char	*last_location;
 
 	last_location = fs;
 	while (*fs)
@@ -123,9 +123,9 @@ int					ft_vdprintf(int fd, const char *fs, va_list args)
 			parse_str_into_format(fs, &format, args);
 			arrange_format(&format);
 			write_from_format(fd, &format, args);
-			while (is_in(*fs, flags))
+			while (is_in(*fs, "0123456789- .*"))
 				fs++;
-			if (is_in(*fs, specifiers))
+			if (is_in(*fs, "cspdiuxX%"))
 				fs++;
 			last_location = fs;
 		}

@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:45:47 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 16:56:54 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 17:33:29 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static char	*ft_lutoa_format(long nbr, int type)
 	return (str);
 }
 
-char	*nbr_repr(long nbr, struct Parameters *format)
+char		*nbr_repr(long nbr, struct Parameters *format)
 {
-	char *str;
-	long diff;
-	long size;
-	int neg;
+	char	*str;
+	long	diff;
+	long	size;
+	int		neg;
 
 	neg = nbr < 0 ? 1 : 0;
 	nbr = neg ? -nbr : nbr;
@@ -42,24 +42,25 @@ char	*nbr_repr(long nbr, struct Parameters *format)
 		str = ft_lutoa_format(nbr, format->type);
 	size = ft_strlen(str);
 	if ((diff = format->precision - size) > 0)
-			leftpad(&str, '0', diff);
-	else if (format->zero_flag && (diff = format->min_field_width - size - neg) > 0)
-			leftpad(&str, '0', diff);
+		leftpad(&str, '0', diff);
+	else if (format->zero_flag
+			&& (diff = format->min_field_width - size - neg) > 0)
+		leftpad(&str, '0', diff);
 	size = ft_strlen(str);
 	if (neg && ++size)
 		leftpad(&str, '-', 1);
-	if(format->minus_flag && (diff = format->min_field_width - size) > 0)
-			rightpad(&str, ' ', diff);
-	else if((diff = format->min_field_width - size) > 0)
-			leftpad(&str, ' ', diff);
+	if (format->minus_flag && (diff = format->min_field_width - size) > 0)
+		rightpad(&str, ' ', diff);
+	else if ((diff = format->min_field_width - size) > 0)
+		leftpad(&str, ' ', diff);
 	return (str);
 }
 
-char *str_repr(char *s, struct Parameters *format)
+char		*str_repr(char *s, struct Parameters *format)
 {
-	char *str;
-	long diff;
-	size_t size;
+	char	*str;
+	long	diff;
+	size_t	size;
 
 	format->precision = format->precision < 0 ? INT_MAX : format->precision;
 	if (!s)
@@ -79,14 +80,14 @@ char *str_repr(char *s, struct Parameters *format)
 	return (str);
 }
 
-char	*char_repr(unsigned char c, struct Parameters *format, ssize_t *size)
+char		*char_repr(unsigned char c, struct Parameters *format, ssize_t *size)
 {
-	long diff;
-	int null_char;
-	char *char_str;
+	long	diff;
+	int		null_char;
+	char	*char_str;
 
 	null_char = 0;
-	if(!c && (null_char = 1))
+	if (!c && (null_char = 1))
 		c = 1;
 	if (!(char_str = malloc(2)))
 		return (NULL);
@@ -110,12 +111,12 @@ char	*char_repr(unsigned char c, struct Parameters *format, ssize_t *size)
 	return (char_str);
 }
 
-char	*ptr_repr(void *ptr, struct Parameters *format)
+char		*ptr_repr(void *ptr, struct Parameters *format)
 {
-	char *ptr_str;
-	char *tmp;
-	long diff;
-	size_t size;
+	char	*ptr_str;
+	char	*tmp;
+	long	diff;
+	size_t	size;
 
 	if (!ptr)
 		ptr_str = ft_strdup("0");
