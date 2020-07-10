@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 10:31:16 by tpouget           #+#    #+#             */
-/*   Updated: 2020/06/25 16:49:28 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 15:19:05 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	leftpad(char **str, char c, size_t n)
 	char padding[++n];
 
 	padding[--n] = '\0';
-	while (--n)
+	while (--n > 0)
 		padding[n] = c;
 	padding[0] = c;
 
@@ -33,7 +33,7 @@ void	rightpad(char **str, char c, size_t n)
 	char padding[++n];
 
 	padding[--n] = '\0';
-	while (--n)
+	while (--n > 0)
 		padding[n] = c;
 	padding[0] = c;
 

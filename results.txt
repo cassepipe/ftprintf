@@ -75,8 +75,12 @@ Test 178 (p_ftfc_5w_throwswarning) : FAILED.
       expected (nonprintable as hex) : "(nil)"
       actual   (nonprintable as hex) : "  0x0"
 
-Test 315 (i_prec_width_nofit_fit_neg_lj) : FAILED.
-    First line of code: {return test("%-8.3i", -8473);}
+Test 214 (d_prec_fits_zero) : FAILED.
+    First line of code: {return test("%.3d", 0);}
+    Timed out
+
+Test 322 (i_prec_width_ff_zero_zp) : FAILED.
+    First line of code: {return test("%08.5i", 0);}
     Timed out
 
 Test 497 (new2019_negstar_9) : FAILED.

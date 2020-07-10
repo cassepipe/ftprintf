@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/09 11:19:10 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 16:01:55 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void					*parse_str_into_format(const char *fs, struct Parameters *format
 	return (format);
 }
 
-static void				*write_from_format(int fd, struct Parameters *format, va_list args)
+static void				write_from_format(int fd, struct Parameters *format, va_list args)
 {
 	char	*replacement;
 	ssize_t	size;
