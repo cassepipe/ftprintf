@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 17:47:19 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 17:56:45 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ static inline int			is_in(char c, const char *charset)
 	return (0);
 }
 
-static void					*init_format(struct Parameters *format)
-{
-	format->zero_flag = 0;
-	format->minus_flag = 0;
-	format->min_field_width = 0;
-	format->precision = -1;
-	return (format);
-}
+/*
+*	static void					*init_format(struct Parameters *format)
+*	{
+*		format->zero_flag = 0;
+*		format->minus_flag = 0;
+*		format->min_field_width = 0;
+*		format->precision = -1;
+*		return (format);
+*	}
+*/
 
 static void					arrange_format(struct Parameters *format)
 {
@@ -108,7 +110,7 @@ static void					write_from_format(int fd,
 	free(replacement);
 }
 
-int					ft_vdprintf(int fd, const char *fs, va_list args)
+int							ft_vdprintf(int fd, const char *fs, va_list args)
 {
 	struct		Parameters format;
 	const char	*last_location;
@@ -119,7 +121,7 @@ int					ft_vdprintf(int fd, const char *fs, va_list args)
 		if (*fs == '%')
 		{
 			fs++;
-			init_format(&format);
+			format.precision = -1;
 			parse_str_into_format(fs, &format, args);
 			arrange_format(&format);
 			write_from_format(fd, &format, args);

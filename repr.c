@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:45:47 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 17:33:29 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/07/10 17:52:37 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ char		*str_repr(char *s, struct Parameters *format)
 	return (str);
 }
 
-char		*char_repr(unsigned char c, struct Parameters *format, ssize_t *size)
+char		*char_repr(unsigned char c,
+		struct Parameters *format,
+		ssize_t *size)
 {
 	long	diff;
 	int		null_char;
