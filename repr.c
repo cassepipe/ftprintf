@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:45:47 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 17:52:37 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/11 15:14:58 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*ft_lutoa_format(long nbr, int type)
 	return (str);
 }
 
-char		*nbr_repr(long nbr, struct Parameters *format)
+char		*nbr_repr(long nbr, struct s_parameters *format)
 {
 	char	*str;
 	long	diff;
@@ -56,7 +56,7 @@ char		*nbr_repr(long nbr, struct Parameters *format)
 	return (str);
 }
 
-char		*str_repr(char *s, struct Parameters *format)
+char		*str_repr(char *s, struct s_parameters *format)
 {
 	char	*str;
 	long	diff;
@@ -81,7 +81,7 @@ char		*str_repr(char *s, struct Parameters *format)
 }
 
 char		*char_repr(unsigned char c,
-		struct Parameters *format,
+		struct s_parameters *format,
 		ssize_t *size)
 {
 	long	diff;
@@ -113,7 +113,7 @@ char		*char_repr(unsigned char c,
 	return (char_str);
 }
 
-char		*ptr_repr(void *ptr, struct Parameters *format)
+char		*ptr_repr(void *ptr, struct s_parameters *format)
 {
 	char	*ptr_str;
 	char	*tmp;

@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/04 17:57:23 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/11 15:10:50 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-struct	Parameters {
+struct	s_parameters {
 	int	zero_flag;
 	int	minus_flag;
 	int	min_field_width;
@@ -30,16 +30,16 @@ struct	Parameters {
 	int	type;
 };
 
-int		ft_printf(const char *, ...);
-int		ft_dprintf(int fd, const char *, ...);
-int		ft_vdprintf(int fd, const char *, va_list);
+int		ft_printf(const char *formatted_string, ...);
+int		ft_dprintf(int fd, const char *formatted_string, ...);
+int		ft_vdprintf(int fd, const char *formatted_string, va_list arg_list);
 
 char	*ft_utoa(unsigned int n);
 char	*ft_utoa_base(unsigned int n, const char *base);
-char	*ptr_repr(void* ptr, struct Parameters *format);	
-char	*str_repr(char* str, struct Parameters *format);
-char	*nbr_repr(long nbr, struct Parameters* format);
-char	*char_repr(unsigned char c, struct Parameters *format, ssize_t *size);
+char	*ptr_repr(void* ptr, struct s_parameters *format);	
+char	*str_repr(char* str, struct s_parameters *format);
+char	*nbr_repr(long nbr, struct s_parameters	*format);
+char	*char_repr(unsigned char c, struct s_parameters *format, ssize_t *size);
 void	leftpad(char **str, char c, size_t n);
 void	rightpad(char **str, char c, size_t n);
 

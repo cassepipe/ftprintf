@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/10 18:12:42 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/11 15:17:13 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static inline int			is_in(char c, const char *charset)
 	return (0);
 }
 
-static void					*init_format(struct Parameters *format)
+static void					*init_format(struct s_parameters *format)
 {
 	format->zero_flag = 0;
 	format->minus_flag = 0;
@@ -33,7 +33,7 @@ static void					*init_format(struct Parameters *format)
 	return (format);
 }
 
-static void					arrange_format(struct Parameters *format)
+static void					arrange_format(struct s_parameters *format)
 {
 	if (format->min_field_width == INT_MIN)
 		format->min_field_width++;
@@ -49,7 +49,7 @@ static void					arrange_format(struct Parameters *format)
 }
 
 static void					*parse_str_into_format(const char *fs,
-		struct Parameters *format,
+		struct s_parameters *format,
 		va_list args)
 {
 	while (is_in(*fs, FLAGS))
@@ -80,7 +80,7 @@ static void					*parse_str_into_format(const char *fs,
 }
 
 static void					write_from_format(int fd,
-		struct Parameters *format,
+		struct s_parameters *format,
 		va_list args)
 {
 	char	*replacement;
@@ -108,10 +108,10 @@ static void					write_from_format(int fd,
 	free(replacement);
 }
 
-int							ft_vdprintf(int fd, const char *fs, va_list args)
+int						ft_vdprintf(int fd, const char *fs, va_list args)
 {
-	struct		Parameters format;
-	const char	*last_location;
+	struct s_parameters	format;
+	const char			*last_location;
 
 	last_location = fs;
 	while (*fs)
