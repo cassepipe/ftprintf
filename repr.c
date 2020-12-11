@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:45:47 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/11 15:14:58 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/11 23:02:13 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,8 @@ char		*char_repr(unsigned char c,
 	null_char = 0;
 	if (!c && (null_char = 1))
 		c = 1;
-	if (!(char_str = malloc(2)))
+	if (!(char_str = ft_strndup((const char*)&c, 1)))
 		return (NULL);
-	char_str[0] = c;
-	char_str[1] = '\0';
 	if ((diff = format->min_field_width - 1) > 0)
 	{
 		if (format->minus_flag)
