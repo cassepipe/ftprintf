@@ -6,7 +6,7 @@
 #    By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/23 16:37:33 by tpouget           #+#    #+#              #
-#    Updated: 2020/07/03 12:59:55 by tpouget          ###   ########.fr        #
+#    Updated: 2020/12/12 22:40:44 by tpouget          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC			=	$(wildcard *.c)
 
 OBJS		= 	${SRC:.c=.o}
 	
-CFLAGS		=	-Wall -Wextra 
+CFLAGS		=	-Wall -Wextra -fsanitize=address -g3
 
 RM			= 	rm -f
 
@@ -30,7 +30,7 @@ CC			= 	 clang
 
 all:			libftprintf.a a.out
 
-a.out:			${OBJS} libft/libft.a
+a.out:			${OBJS} libft/libft.a Makefile
 				${CC} ${OBJS} libft/libft.a
 
 libftprintf.a:	${OBJS} libft/libft.a  

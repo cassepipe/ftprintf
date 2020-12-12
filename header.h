@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/12 20:06:08 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/12 23:05:50 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char	*ptr_repr(void *ptr, struct s_parameters *format, ssize_t *size);
 char	*str_repr(char *str, struct s_parameters *format, ssize_t *size);
 char	*nbr_repr(long nbr, struct s_parameters	*format, ssize_t *size);
 char	*char_repr(unsigned char c, struct s_parameters *format, ssize_t *size);
-char	*leftpad(char **str, char c, size_t n);
-char	*rightpad(char **str, char c, size_t n);
+void	leftpad(char **str, char c, size_t n);
+void	rightpad(char **str, char c, size_t n);
 
 int		is_in(char c, const char *charset);
 void	init_format(struct s_parameters *format);
