@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:45:47 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/11 23:02:13 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/12 16:45:41 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ static char	*ft_lutoa_format(long nbr, int type)
 	else if (type == 'X')
 		str = ft_lutoa_base(nbr, "0123456789ABCDEF");
 	else
-		str = "(unknown format)";
+		str = NULL;
 	return (str);
 }
 
-char		*nbr_repr(long nbr, struct s_parameters *format)
+char		*nbr_repr(long nbr, struct s_parameters *format, ssize_t *size)
 {
 	char	*str;
 	long	diff;
-	long	size;
 	int		neg;
 
 	neg = nbr < 0 ? 1 : 0;
@@ -40,36 +39,37 @@ char		*nbr_repr(long nbr, struct s_parameters *format)
 		str = ft_strdup("");
 	else
 		str = ft_lutoa_format(nbr, format->type);
-	size = ft_strlen(str);
-	if ((diff = format->precision - size) > 0)
+	*size = ft_strlen(str);
+	if ((diff = format->precision - *size) > 0)
 		leftpad(&str, '0', diff);
 	else if (format->zero_flag
-			&& (diff = format->min_field_width - size - neg) > 0)
+			&& (diff = format->min_field_width - *size - neg) > 0)
 		leftpad(&str, '0', diff);
-	size = ft_strlen(str);
-	if (neg && ++size)
+	*size = diff > 0 ? *size + diff : *size;
+	if (neg && ++(*size))
 		leftpad(&str, '-', 1);
-	if (format->minus_flag && (diff = format->min_field_width - size) > 0)
+	if (format->minus_flag && (diff = format->min_field_width - *size) > 0)
 		rightpad(&str, ' ', diff);
-	else if ((diff = format->min_field_width - size) > 0)
+	else if ((diff = format->min_field_width - *size) > 0)
 		leftpad(&str, ' ', diff);
+	*size = diff > 0 ? *size + diff : *size;
 	return (str);
 }
 
-char		*str_repr(char *s, struct s_parameters *format)
+char		*str_repr(char *s, struct s_parameters *format, ssize_t *size)
 {
 	char	*str;
 	long	diff;
-	size_t	size;
 
 	format->precision = format->precision < 0 ? INT_MAX : format->precision;
 	if (!s)
 		str = ft_strndup("(null)", format->precision);
 	else
 		str = ft_strndup(s, format->precision);
-	size = ft_strlen(str);
-	if ((diff = format->min_field_width - size) > 0)
+	*size = ft_strlen(str);
+	if ((diff = format->min_field_width - *size) > 0)
 	{
+		*size += diff;
 		if (format->minus_flag)
 			rightpad(&str, ' ', diff);
 		else if (format->zero_flag)
@@ -102,7 +102,7 @@ char		*char_repr(unsigned char c,
 		else
 			leftpad(&char_str, ' ', diff);
 	}
-	*size = ft_strlen(char_str);
+	*size = diff > 0 ? diff + 1 : 1;
 	diff = -1;
 	if (null_char)
 		while (char_str[++diff])
@@ -111,12 +111,11 @@ char		*char_repr(unsigned char c,
 	return (char_str);
 }
 
-char		*ptr_repr(void *ptr, struct s_parameters *format)
+char		*ptr_repr(void *ptr, struct s_parameters *format, ssize_t *size)
 {
 	char	*ptr_str;
 	char	*tmp;
 	long	diff;
-	size_t	size;
 
 	if (!ptr)
 		ptr_str = ft_strdup("0");
@@ -125,9 +124,10 @@ char		*ptr_repr(void *ptr, struct s_parameters *format)
 	tmp = ptr_str;
 	ptr_str = ft_strjoin("0x", ptr_str);
 	free(tmp);
-	size = ft_strlen(ptr_str);
-	if ((diff = format->min_field_width - size) > 0)
+	*size = ft_strlen(ptr_str);
+	if ((diff = format->min_field_width - *size) > 0)
 	{
+		*size += diff;
 		if (format->minus_flag)
 			rightpad(&ptr_str, ' ', diff);
 		else if (format->zero_flag)
