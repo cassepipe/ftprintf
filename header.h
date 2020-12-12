@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/12 19:58:01 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/12 20:06:08 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int		ft_printf(const char *formatted_string, ...);
 int		ft_dprintf(int fd, const char *formatted_string, ...);
 int		ft_vdprintf(int fd, const char *formatted_string, va_list arg_list);
 
-char	*ft_utoa(unsigned int n);
-char	*ft_utoa_base(unsigned int n, const char *base);
+char	*ft_lutoa_base(unsigned long n, const char *base);
 char	*ptr_repr(void *ptr, struct s_parameters *format, ssize_t *size);
 char	*str_repr(char *str, struct s_parameters *format, ssize_t *size);
 char	*nbr_repr(long nbr, struct s_parameters	*format, ssize_t *size);
