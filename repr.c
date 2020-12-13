@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:45:47 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/12 16:45:41 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/13 22:39:18 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char		*nbr_repr(long nbr, struct s_parameters *format, ssize_t *size)
 
 	neg = nbr < 0 ? 1 : 0;
 	nbr = neg ? -nbr : nbr;
-	if (format->precision == 0)
+	if (format->precision == 0 && !nbr)
 		str = ft_strdup("");
 	else
 		str = ft_lutoa_format(nbr, format->type);

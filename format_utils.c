@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:00:36 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/12 23:14:20 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/13 22:45:34 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		*parse_str_into_format(const char *fs,
 	return (format);
 }
 
-ssize_t		write_formatted(int fd,
+ssize_t		write_format(int fd,
 		va_list args,
 		struct s_parameters *format)
 {
