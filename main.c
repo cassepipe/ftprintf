@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:44:49 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/13 19:40:35 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 00:16:31 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,39 +108,39 @@ int main(void)
 	/*printf("%*d\n", -2147483648, 12345);*/
 	/*ft_printf("%*d\n", -2147483648 , 12345);*/
 
-	int		a = -4;
-	int		b = 0;
 	char	c = 'a';
 	int		d = 2147483647;
 	int		e = -2147483648;
-	int		f = 42;
-	int		g = 25;
-	int		h = 4200;
 	int		i = 8;
 	int		j = -12;
 	int		k = 123456789;
 	int		l = 0;
 	int		m = -12345678;
-	char	*n = "abcdefghijklmnop";
-	char	*o = "-a";
-	char	*p = "-12";
-	char	*q = "0";
-	char	*r = "%%";
-	char	*s = "-2147483648";
-	char	*t = "0x12345678";
-	char	*u = "-0";
 
-	/*printf("%0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d\n", i, j, k, l, m, c, e, d); //T12*/
-	/*ft_printf("%0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d\n", i, j, k, l, m, c, e, d); //T12*/
+	printf("%0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d\n", i, j, k, l, m, c, e, d); //T12
+	ft_printf("%0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d\n", i, j, k, l, m, c, e, d); //T12
 
-	/*printf("%.0i, %.0d, %.0d, %.0d, %.0d, %.0d, %.0d, %.0d\n", i, j, k, l, m, c, e, d); //T13*/
-	/*ft_printf("%.0i, %.0d, %.0d, %.0d, %.0d, %.0d, %.0d, %.0d\n", i, j, k, l, m, c, e, d); //T13*/
+	printf("%.0i, %.0d, %.0d, %.0d, %.0d, %.0d, %.0d, %.0d\n", i, j, k, l, m, c, e, d); //T13
+	ft_printf("%.0i, %.0d, %.0d, %.0d, %.0d, %.0d, %.0d, %.0d\n", i, j, k, l, m, c, e, d); //T13
 
-	/*printf("%0.0i, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d\n", i, j, k, l, m, c, e, d); //T14*/
-	/*ft_printf("%0.0i, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d\n", i, j, k, l, m, c, e, d); //T14*/
+	printf("%0.0i, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d\n", i, j, k, l, m, c, e, d); //T14
+	ft_printf("%0.0i, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d, %0.0d\n", i, j, k, l, m, c, e, d); //T14
 
 	printf("%0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d\n", 0, 0, 0, 0, 0, 0, 0, 0); //T12
 	ft_printf("%0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d\n", 0, 0, 0, 0, 0, 0, 0, 0); //T12
+
+
+	i = printf("\\!/%-2lc\\!/", (char)200);
+	puts("");
+	printf("Returned = %d\n", i);
+	j = ft_printf("\\!/%-2lc\\!/", (char)200);
+	puts("");
+	printf("Returned = %d\n", j);
+
+	i = printf("This should not print any further %k\n", 123);
+	printf("Returned = %d\n", j);
+	i = ft_printf("This should not print any further %k\n", 123);
+	printf("Returned = %d\n", j);
 
 	return(0);
 
