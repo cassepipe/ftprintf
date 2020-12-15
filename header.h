@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/15 20:59:37 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 21:41:09 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
-# define FLAGS "0- "
 
 # include <unistd.h>
 # include <stdlib.h>

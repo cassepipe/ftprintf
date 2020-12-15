@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/15 21:32:39 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 23:15:03 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int						ft_vdprintf(int fd, const char *fs, va_list args)
 
 	ret = 0;
 	last_loc = fs;
+	format.error = 0;
 	while (*fs)
 	{
 		if (*fs == '%' && fs++)

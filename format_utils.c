@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:00:36 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/15 21:19:10 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 21:40:08 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		*parse_str_into_format(const char *fs,
 		struct s_parameters *format,
 		va_list args)
 {
-	while (is_in(*fs, FLAGS))
+	while (is_in(*fs, "0- "))
 	{
 		if (*fs == '0')
 			format->zero_flag = 1;

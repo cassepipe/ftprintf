@@ -1,0 +1,6 @@
+[submodule "42TESTERS-PRINTF"]
+	path = 42TESTERS-PRINTF
+	url = https://github.com/Mazoise/42TESTERS-PRINTF
+[submodule "pft"]
+	path = pft
+	url = https://github.com/gavinfielder/pft

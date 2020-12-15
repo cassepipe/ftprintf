@@ -1,1 +1,0 @@
-gcc -fsanitize=address -g3 *.c libft/*.c
