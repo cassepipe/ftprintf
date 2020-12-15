@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/15 21:17:05 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 21:32:39 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int						ft_vdprintf(int fd, const char *fs, va_list args)
 			fs++;
 		ret += write(fd, last_loc, fs - last_loc);
 	}
-	return (format.error ? ret : -1);
+	return (format.error ? -1 : ret);
 }
