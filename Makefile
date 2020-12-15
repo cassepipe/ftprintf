@@ -6,7 +6,7 @@
 #    By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/23 16:37:33 by tpouget           #+#    #+#              #
-#    Updated: 2020/12/13 19:09:39 by tpouget          ###   ########.fr        #
+#    Updated: 2020/12/15 13:48:18 by tpouget          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SANITIZER	=	-fsanitize=address
 all:			libftprintf.a a.out
 
 a.out:			${OBJS} libft/libft.a Makefile
-				${CC} ${OBJS} libft/libft.a
+				${CC} ${SANITIZER} ${OBJS} libft/libft.a
 
 libftprintf.a:	${OBJS} libft/libft.a  
 				ar rcs $@ ${OBJS} $(wildcard libft/*.o)
