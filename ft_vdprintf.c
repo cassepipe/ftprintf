@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:18:09 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/13 22:44:45 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 21:17:05 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int						ft_vdprintf(int fd, const char *fs, va_list args)
 	struct s_parameters	format;
 	const char			*last_loc;
 	ssize_t				ret;
-	ssize_t				sz;
 
 	ret = 0;
 	last_loc = fs;
@@ -27,16 +26,15 @@ int						ft_vdprintf(int fd, const char *fs, va_list args)
 		{
 			init_format(&format);
 			parse_str_into_format(fs, &format, args);
-			if ((sz = write_format(fd, args, &format)) == -1 || (ret += sz) < 0)
-				return (-1);
+			arrange_format(&format);
+			ret += write_format(fd, args, &format);
 			while (is_in(*fs, "0123456789- .*"))
 				fs++;
 			last_loc = ++fs;
 		}
 		while (*fs && *fs != '%')
 			fs++;
-		if ((sz = write(fd, last_loc, fs - last_loc)) == -1 || !(ret += sz))
-			return (-1);
+		ret += write(fd, last_loc, fs - last_loc);
 	}
-	return (ret);
+	return (format.error ? ret : -1);
 }

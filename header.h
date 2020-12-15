@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/13 22:44:59 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 20:59:37 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ struct	s_parameters {
 	int	min_field_width;
 	int	precision;
 	int	type;
+	int error;
 };
 
 int		ft_printf(const char *formatted_string, ...);

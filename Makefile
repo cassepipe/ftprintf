@@ -6,7 +6,7 @@
 #    By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/23 16:37:33 by tpouget           #+#    #+#              #
-#    Updated: 2020/12/15 13:48:18 by tpouget          ###   ########.fr        #
+#    Updated: 2020/12/15 20:52:19 by tpouget          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RM			= 	rm -f
 
 CC			= 	 gcc
 
-SANITIZER	=	-fsanitize=address
+SANITIZER	=	#-fsanitize=address
 
 
 #	Rules

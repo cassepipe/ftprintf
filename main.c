@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:44:49 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/15 14:08:56 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 21:21:33 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,14 +125,14 @@ int main(void)
 	i = printf("\\!/%-2lc\\!/", (char)200);
 	puts("");
 	printf("Returned = %d\n", i);
-	j = ft_printf("\\!/%-2lc\\!/", (char)200);
+	i = ft_printf("\\!/%-2lc\\!/", (char)200);
 	puts("");
-	printf("Returned = %d\n", j);
+	printf("Returned = %d\n", i);
 
 	i = printf("This should not print any further %k than there\n", 123);
-	printf("Returned = %d\n", j);
+	printf("Returned = %d\n", i);
 	i = ft_printf("This should not print any further %k than there\n", 123);
-	printf("Returned = %d\n", j);
+	printf("Returned = %d\n", i);
 
 	/*The real printf makes a infinite loop on this one*/
 	/*i = printf("%*d\n", -2147483648, 12345);*/

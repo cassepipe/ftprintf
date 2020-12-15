@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 20:00:36 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/13 22:45:34 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/15 21:19:10 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ ssize_t		write_format(int fd,
 	char	*replacement;
 	ssize_t	size;
 
-	arrange_format(format);
+	replacement = NULL;
+	size = -1;
 	if (is_in(format->type, "di"))
 		replacement = nbr_repr(va_arg(args, int), format, &size);
 	else if (is_in(format->type, "uxX"))
@@ -98,7 +99,10 @@ ssize_t		write_format(int fd,
 	else if (format->type == '%')
 		replacement = str_repr("%", format, &size);
 	else
-		return (-1);
+	{
+		write(fd, "|unknown format|", 16);
+		format->error = 1;
+	}
 	size = write(fd, replacement, size);
 	free(replacement);
 	return (size);
