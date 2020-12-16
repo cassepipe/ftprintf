@@ -6,53 +6,56 @@
 #    By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/23 16:37:33 by tpouget           #+#    #+#              #
-#    Updated: 2020/12/15 20:52:19 by tpouget          ###   ########.fr        #
+#    Updated: 2020/12/16 14:35:23 by tpouget          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#################
-##  VARIABLES  ##
-#################
+#	Variables
 
+PHONY			=	all clean fclean re
 
-SRC			=	$(wildcard *.c)	
+SOURCEFILES		=	format_utils.c	\
+					ft_dprintf.c      \
+					ft_lutoa_base.c   \
+					ft_printf.c       \
+					ft_vdprintf.c     \
+					pad.c             \
+					repr.c            \
 
-OBJS		= 	${SRC:.c=.o}
+OBJECTFILES		=	$(patsubst %.c,obj/%.o,$(SOURCEFILES))
 	
-CFLAGS		=	-Wall -Wextra -g3
+HEADERS			=	header.h
+	
+CFLAGS			=	-Wall -Wextra -Werror
 
-RM			= 	rm -f
+CC	  		  	= 	clang
 
-CC			= 	 gcc
-
-SANITIZER	=	#-fsanitize=address
+NAME			=	libftprintf.a
 
 
 #	Rules
 
-all:			libftprintf.a a.out
+all:			${NAME}
 
-a.out:			${OBJS} libft/libft.a Makefile
-				${CC} ${SANITIZER} ${OBJS} libft/libft.a
+${NAME}:		${OBJECTFILES} ${HEADERS} libft/libft.a Makefile
+				ar rcsT $@ ${OBJECTFILES} libft/libft.a
 
-libftprintf.a:	${OBJS} libft/libft.a  
-				ar rcs $@ ${OBJS} $(wildcard libft/*.o)
-				#make -C pft
-
-%.o:			%.c	header.h
+libft/libft.a:		
+				make -C libft libft.a
+				
+obj/%.o:		%.c Makefile | obj
 				${CC} ${CFLAGS} -c $< -o $@
 
-libft/libft.a:
-				$(MAKE) -C libft
+obj:
+				mkdir obj
 
 clean:			
-				${RM} ${OBJS}
-				make -C libft clean
+				rm -rf obj
+				make -C libft fclean
 
 fclean:			clean
-				rm -f a.out libftprintf.a
-				rm -f libft/libft.a
+				rm -rf ${NAME}
 
 re:				fclean all
 
-.PHONY:			all clean fclean re 
+.PHONY:			${PHONY}	
