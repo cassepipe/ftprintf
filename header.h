@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 11:20:06 by tpouget           #+#    #+#             */
-/*   Updated: 2020/12/15 21:41:09 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/16 15:08:28 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ void	arrange_format(struct s_parameters *format);
 void	*parse_str_into_format(const char *fs, struct s_parameters *format,
 																va_list args);
 ssize_t	write_format(int fd, va_list args, struct s_parameters *format);
-int		ft_vdprintf(int fd, const char *fs, va_list args);
 
 #endif
