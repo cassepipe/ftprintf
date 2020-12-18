@@ -6,7 +6,7 @@
 /*   By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 18:29:05 by tpouget           #+#    #+#             */
-/*   Updated: 2020/07/04 16:01:40 by tpouget          ###   ########.fr       */
+/*   Updated: 2020/12/17 19:56:18 by tpouget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ char				*ft_itoa(int n);
 char				*ft_utoa_base(unsigned int n, const char *base_str);
 char				*ft_lutoa_base(unsigned long n, const char *base_str);
 
-
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -88,10 +87,10 @@ void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
 t_list				*ft_lstnew(void *content);
-void				ft_lstadd_front(t_list **, t_list *);
+void				ft_lstadd_front(t_list **list, t_list *node);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
-void				ft_lstadd_back(t_list **, t_list *);
+void				ft_lstadd_back(t_list **list, t_list *node);
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));

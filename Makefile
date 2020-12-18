@@ -6,7 +6,7 @@
 #    By: tpouget <cassepipe@ymail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/23 16:37:33 by tpouget           #+#    #+#              #
-#    Updated: 2020/12/16 14:35:23 by tpouget          ###   ########.fr        #
+#    Updated: 2020/12/17 19:08:38 by tpouget          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,11 @@ NAME			=	libftprintf.a
 all:			${NAME}
 
 ${NAME}:		${OBJECTFILES} ${HEADERS} libft/libft.a Makefile
-				ar rcsT $@ ${OBJECTFILES} libft/libft.a
+				cp libft/libft.a ${NAME}
+				ar rcs $@ ${OBJECTFILES}
 
 libft/libft.a:		
-				make -C libft libft.a
+				make -C libft
 				
 obj/%.o:		%.c Makefile | obj
 				${CC} ${CFLAGS} -c $< -o $@
